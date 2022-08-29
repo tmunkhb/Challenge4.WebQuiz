@@ -161,3 +161,28 @@ function loadQuestion() {
             btnAnswer4.setAttribute("data-answered", "Correct");
     }
 }
+
+//-----------------------------------//
+//--------Timer Functions------------//
+//-----------------------------------//
+
+function setTime() {
+    timerInterval = setInterval(function () {
+        secondsLeft--;
+
+        if (!secondsLeft > 0) {
+            secondsLeft = 0;
+        }
+        timeEl.textContent = "Time: " + secondsLeft.toString().padStart(2, '0');
+        checkTimeRemaining();
+    }, 1000);
+}
+
+function checkTimeRemaining() {
+
+    if (secondsLeft <= 0 || blnFinalQuestion) {
+        stopQuiz();
+        clearInterval(timerInterval);
+        displayFinalScore();
+    }
+}
