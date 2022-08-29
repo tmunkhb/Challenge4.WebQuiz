@@ -9,8 +9,95 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./assets/css/style.css">
   </head>
-  <body>
+  <body class="bg-white">
+    
+    <!-- Highscore html -->
+        <div class="row p-4 mx-auto">
+            <div class="col-sm-6 text-left d-flex justify-content-start">
+                <h3 id="highscores"><a href="highscores.html" class="" style="text-decoration:none;">View Highscores</a></h3>
+            </div>
+            <div class="col-sm-6 text-right d-flex justify-content-end">
+                <h4 id="timer">Time: 70</h4> 
+            </div>
+        </div>
+    <!-- Quiz intro -->
+        <div class="container bg-white w-50 p-2"> 
+            <section id="startQuiz" class="text-center">
+              <div class="row">
+                <div class="col-12 text center">
+                  <h1>Coding Quiz Challenge</h1>
+                  <h3 id="questionTitle class="text-justify p-3 m-3>Try to answer the following code-related questions within the time limit. Keep in mind that 
+                      incorrect answers will penalize your score/time by fifteen seconds!
+                  </h3>
+                </div>
+              </div>
+              <!-- Quiz button -->
+              <div class="row">
+                <div class="col-12 text-center">
+                  <button type="button" class="btn btn-primary rounded-3" id="startBtn">Start Quiz</button>
+                </div>
+              </div>
+            </section>
 
+            <section id="takeQuiz" class="d-none">
+              <div class="row p-1">
+                <div class="col m-3">
+                  <h2 id="Question"></h2>
+                </div>
+              </div>
+              <!-- Answer buttons -->
+              <div class="row p-1">
+                <div class="col-12 d-grid gap-1">
+                  <button type="button" class="btn btn-primary text-left" id="btnAnswer1"></button>
+                </div>
+              </div>
+              
+              <div class="row p-1">
+                <div class="col-12 d-grid gap-">
+                  <button type="button" class="btn btn-primary text-left" id="btnAnswer2"></button>
+                </div>
+              </div>
+              
+              <div class="row p-1">
+                <div class="col-12 d-grid gap-">
+                  <button type="button" class="btn btn-primary text-left" id="btnAnswer3"></button>
+                </div>
+              </div>
+              
+              <div class="row p-1">
+                <div class="col-12 d-grid gap-">
+                  <button type="button" class="btn btn-primary d-grid gap-1 text-left" id="btnAnswer4"></button>
+                </div>
+              </div>
+              
+              <div class="row p-1">
+                <div class="col-6">
+                  <h3 id="result"></h3>
+                </div>
+              </div>
+            </section>
+            
+            <!-- Final Score -->
+            <section id="finalScore" class="d-none">
+              <div class="row p-1">
+                <div classs="col-12 text-left">
+                  <h2 id="msgQuizDone"></h2>
+                  <h6 id="msgScore"></h6>
+                </div>
+              </div>
+            <!-- Final Score Submit -->
+              <div class="row text-left">
+                <div class="col-12 text-left">
+                  <label for="YourInitials">Enter Initials:</label>
+                  <input type="text" name="YourInitials" id="xInitials">
+                  <button type="submit" class="btn btn-primary btn-sm" id="submitBtn">Submit</button>
+                </div>
+              </div>
+            </section>
+          </div>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <!-- Custom JS -->
+    <script src="./assets/js/script.js"></script>
   </body>
-
 </html>
