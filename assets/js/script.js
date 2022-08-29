@@ -213,3 +213,35 @@ function displayFinalScore() {
 
     document.getElementById("msgScore").textContent = "Your final score is " + finalscore;
 }
+
+//-----------------------------------//
+//---------Take Quiz Function--------//
+//-----------------------------------//
+
+function startQuiz() {
+    idxQuestion = 0;
+    loadQuestion();
+
+    startQuizMain.classList.add("d-none");
+    sQuiz.classList.remove("d-none");
+
+    setTime();
+}
+
+//-----------------------------------//
+//---------Stop Quiz Function--------//
+//-----------------------------------//
+function stopQuiz() {
+    btnAnswer1.disabled = true;
+    btnAnswer1.classList.remove("btn-primary");
+    btnAnswer1.classList.add("btn-secondary");
+    btnAnswer2.disabled = true;
+    btnAnswer2.classList.remove("btn-primary");
+    btnAnswer2.classList.add("btn-secondary");
+    btnAnswer3.disabled = true;
+    btnAnswer3.classList.remove("btn-primary");
+    btnAnswer3.classList.add("btn-secondary");
+    btnAnswer4.disabled = true;
+    btnAnswer4.classList.remove("btn-primary");
+    btnAnswer4.classList.add("btn-secondary");
+}
