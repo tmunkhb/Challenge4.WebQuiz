@@ -55,3 +55,30 @@ let questions = [
     },
 
 ];
+
+//-----------------------------------//
+//--------------Let Variables--------//
+//-----------------------------------//
+
+let timeEl = document.getElementById("timer");
+let secondsLeft = 70;
+let timerInterval;
+
+let questionTitle = document.getElementById("Question");
+let btnAnswer1 = document.getElementById("btnAnswer1");
+let btnAnswer2 = document.getElementById("btnAnswer2");
+let btnAnswer3 = document.getElementById("btnAnswer3");
+let btnAnswer4 = document.getElementById("btnAnswer4");
+let sQuiz = document.getElementById("takeQuiz");
+let finalScoreEl = document.getElementById("finalScore");
+let startQuizMain = document.getElementById("startQuiz");
+let msgResult = document.getElementById("result");
+let msgDone = document.getElementById("msgQuizDone");
+let msgScoreEl = document.getElementById("msgScore");
+
+let numCorrectAnswers = 0;
+let numTotalQuestions = 0;
+let idxQuestion = 0;  // first question starts at 0
+let blnCorrect = false;
+let finalscore = 0;
+let blnFinalQuestion = false;
