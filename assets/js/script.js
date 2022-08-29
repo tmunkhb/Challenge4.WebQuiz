@@ -245,3 +245,55 @@ function stopQuiz() {
     btnAnswer4.classList.remove("btn-primary");
     btnAnswer4.classList.add("btn-secondary");
 }
+
+//-----------------------------------//
+//-------Submit Quiz Function--------//
+//-----------------------------------//
+
+document.querySelector("#startBtn").onclick = function (event) {
+
+    if (event === null) {
+        return;
+    }
+
+    startQuiz();
+}
+
+document.querySelector("#submitBtn").onclick = function (event) {
+
+    if (event === null) {
+        return;
+    }
+
+    if (document.getElementById("xInitials").value.length === 0) {
+        alert("Please enter your initials to submit your quiz score.");
+        return;
+    }
+    if (finalscore === 0) {
+        alert("Sorry, your score must be above a zero to be saved.");
+        return;
+    }
+
+    Scores = JSON.parse(localStorage.getItem('highscores'));
+
+    if (Scores !== null) {
+
+        Scores.push({
+            'initials': document.getElementById("xInitials").value,
+            'highscore': finalscore
+        });
+    } else {
+
+        Scores = [];
+        Scores.push({
+            'initials': document.getElementById("xInitials").value,
+            'highscore': finalscore
+        });
+    }
+    localStorage.setItem('highscores', JSON.stringify(Scores));
+    document.getElementById("submitBtn").disabled = true;
+    document.getElementById("submitBtn").remove("btn-primary");
+
+    finalScoreEl.classList.add("d-none");
+    document.location.href= "index.html";
+}
