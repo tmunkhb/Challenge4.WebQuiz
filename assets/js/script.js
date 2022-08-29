@@ -82,3 +82,82 @@ let idxQuestion = 0;  // first question starts at 0
 let blnCorrect = false;
 let finalscore = 0;
 let blnFinalQuestion = false;
+
+//-----------------------------------//
+//-----Clicking on answer button-----//
+//-----------------------------------//
+
+sQuiz.addEventListener("click", function  (event) {
+    let element = event.target;
+    if (element.matches("button")) {
+
+        msgResult.textContent = element.getAttribute("data-answered");
+        msgResult.style.color = "red";
+
+        if (element.getAttribute("data-answered") === "Correct") {
+            blnCorrect = true;
+            msgResult.style.color = "green";
+            numCorrectAnswers++;
+        } else {
+            secondsLeft -= 15;
+            checkTimeRemaining ();
+        }
+        idxQuestion++;
+        loadQuestion();
+    }
+});
+
+function loadQuestion() {
+    let idxCorrect = -99;
+    if (questions[idxQuestion] === undefined) {
+
+        blnFinalQuestion = true;
+
+        stopQuiz();
+        return;
+    }
+
+    let correctAnswer = questions[idxQuestion].answer;
+    numTotalQuestions++;
+
+    questionTitle.textContent = questions[idxQuestion].title;
+
+    questions[idxQuestion].choices.sort(function() {
+        return 0.5 - Math.random();
+    });
+
+//-----------------------------------//
+//----Find which answer is correct---//
+//-----------------------------------//
+
+
+    for (i = 0; i < questions[idxQuestion].choices.length; i++) {
+        if (questions[idxQuestion].choices[i] === correctAnswer) {
+            idxCorrect = i;
+        }
+    }
+
+    btnAnswer1.textContent = questions[idxQuestion].choices[0];
+    btnAnswer2.textContent = questions[idxQuestion].choices[1];
+    btnAnswer3.textContent = questions[idxQuestion].choices[2];
+    btnAnswer4.textContent = questions[idxQuestion].choices[3];
+
+    btnAnswer1.setAttribute("data-answered", "Incorrect");
+    btnAnswer2.setAttribute("data-answered", "Incorrect");
+    btnAnswer3.setAttribute("data-answered", "Incorrect");
+    btnAnswer4.setAttribute("data-answered", "Incorrect");
+
+    switch (idxCorrect) {
+        case 0:
+            btnAnswer1.setAttribute("data-answered", "Correct");
+            break;
+        case 1:
+            btnAnswer2.setAttribute("data-answered", "Correct");
+            break;
+        case 2:
+            btnAnswer3.setAttribute("data-answered", "Correct");
+            break;
+        case 3:
+            btnAnswer4.setAttribute("data-answered", "Correct");
+    }
+}
