@@ -186,3 +186,30 @@ function checkTimeRemaining() {
         displayFinalScore();
     }
 }
+
+//-----------------------------------//
+//--------Display Finalscore---------//
+//-----------------------------------//
+
+function displayFinalScore() {
+
+    sQuiz.classList.add("d-none")
+
+    finalScoreEl.classList.remove("d-none");
+    document.getElementById("msgQuizDone").textContent = "Quiz Finished!";
+    if (!secondsLeft > 0) {
+        secondsLeft = 0;
+    }
+
+    finalscore = 0;
+    if (numCorrectAnswers > 0) {
+
+        finalscore = Math.round(100 * (numCorrectAnswers / numTotalQuestions) + (0.2 * secondsLeft));
+        if (finalscore > 100) {
+            finalscore = 100;
+        }
+    }
+    console.log("note: Total questions = " + numTotalQuestions + "\n correct answers= " + numCorrectAnswers + "\n seconds left= " + secondsLeft + "\n final score = " + finalscore);
+
+    document.getElementById("msgScore").textContent = "Your final score is " + finalscore;
+}
