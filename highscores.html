@@ -9,7 +9,89 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./assets/css/style.css">
   </head>
-<bodys>
+  <body class="bg-white">
+    <div class="container bg-white w-50">
+        <div class="row m-4">
+            <div class="col-4 text-center">
+                <h1>Highscores</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <ol id="scoreList" class="bg-white"></ol>
+            </div>
+        </div>
+        <div class="row-1">
+            <div class="col-6">
+                <button type="button" class="btn btn-primary" id="btnBack">Go Back</button>
+                <button type="button" class="btn btn-primary" id="btnClearScores">Clear Highscores</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <script>
+       
+        let ready = function (fn) {
 
+            // Sanity check
+            if (typeof fn !== 'function') return;
+
+            // If document is already loaded, run method
+            if (document.readyState === 'complete') {
+                return fn();
+            }
+
+            // Otherwise, wait until document is loaded
+            document.addEventListener('DOMContentLoaded', fn, false);
+            };
+
+        // Example
+        ready(function () {
+
+            let scoreListEl = document.getElementById("scoreList");
+            // Retrieve High Score info from localstorage
+            let Scores = JSON.parse(localStorage.getItem('highscores'));        
+
+            if (Scores !== null) {
+                // sort highscores in descending order
+                Scores.sort(function(a, b){
+                let x = a.highscore;
+                let y = b.highscore;
+                if (x > y) {return -1;}
+                if (x < y) {return 1;}
+                return 0;
+                });
+                console.log(Scores);
+
+                //clear out our ordered list items
+                let ol = document.getElementById("scoreList");
+                ol.innerHTML = "";
+        
+                // alert(HighScore + "from local storage");
+                //display Highscore from localstorage on the screen element
+                for (let i = 0; i < Scores.length; i++) {
+                    console.log(Scores[i].initials);
+                //let dummy = Scores[i].initials +" "+ Scores[i].highscore;
+                    let scoreEl = document.createElement("li");
+                    scoreEl.textContent = Scores[i].initials +" "+ Scores[i].highscore;                        
+                    scoreListEl.appendChild(scoreEl);
+                }
+            }
+        });
+
+        document.getElementById("btnBack").onclick = function (event) {
+            // alert("link back to index.html here");
+            document.location.href= "index.html";
+        }
+
+        document.getElementById("btnClearScores").onclick = function (event) {
+            // Clear local storage
+            localStorage.removeItem("highscores");
+            //clear out our ordered list items
+            let ol = document.getElementById("scoreList");
+            ol.innerHTML = "";            
+        }       
+    
+    </script>
 </body>
 </html>
